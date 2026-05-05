@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>NeoTêmis - Cadastro</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+    
+</head>
+<body>
+
+<div class="cadastro-box">
+    <form method="POST" class="email-senha-cadastro">
+
+        <div class="topo-cadastro">
+
+            <img src="{{ url_for('static', filename='imagens/neotemis.png') }}"
+            alt="Logo NeoTêmis"
+            class="logo-cadastro">
+        
+            <div class="tipo-usuario">
+                <h3>Tipo de Conta</h3>
+
+                <label class="opcao-tipo">
+                    <input
+                    type="radio"
+                    name="tipo"
+                    id="advogado"
+                    required
+                    >
+                    <span>Advogado</span>
+                </label>
+
+                <label class="opcao-tipo">
+                    <input
+                    type="radio"
+                    name="tipo"
+                    id="cliente"
+                    >
+                    <span>Cliente</span>
+                </label>
+
+
+            </div>
+
+        </div>
+
+
+        <h2 class="cadastro-texto">
+            CADASTRO
+        </h2>
+
+        <input
+            type="text"
+            name="nome"
+            placeholder="Nome completo"
+            required
+        >
+
+        <input
+            type="text"
+            name="cpf"
+            placeholder="CPF"
+            required
+        >
+
+        <input
+            type="date"
+            name="data_nascimento"
+            required
+        >
+        
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            type="password"
+            name="senha"
+            placeholder="Senha"
+            required
+        >
+
+        <label class="termos">
+            <input type="checkbox" id="termos" required>
+            <p class="termos-texto">
+            Ao criar a conta, eu aceito os <a href="termos.html" target="_blank">Termos de uso e Política de Privacidade</a>
+            </p>
+        </label>
+
+        <p id="erro-termos" class="erro">
+            Você precisa aceitar os termos de uso.
+        </p>
+        
+        <button type="submit">
+            CRIAR CONTA
+        </button>
+
+        <div class="links">
+            <p>Ja possui conta? <a href="/">Fazer login</a></p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeoTêmis - Login</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <img src="{{ url_for('static', filename='imagens/neotemis.png') }}"
+         alt="Logo NeoTêmis" class="logo">
+
+        <form method="POST" id="form-login">
+
+            <input 
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Digite seu email"
+            >
+
+            <span class="mensagem-erro" id="erro-email">
+                Preencha o email
+            </span>
+
+            <div class="senha-area">
+
+                <input 
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                >
+
+                <span id="toggleSenha">
+                    Mostrar
+                </span>
+
+            </div>
+
+            <span class="mensagem-erro" id="erro-senha">
+                Preencha a senha
+            </span>
+
+
+            <div class="links">
+                <a href="#">Esqueci a senha</a>
+                <a href="http://127.0.0.1:5000/cadastro">Cadastre-se</a>
+            </div>
+
+            <button type="submit">
+                ENTRAR
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
