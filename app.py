@@ -1,3 +1,4 @@
+import uuid
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -35,6 +36,8 @@ class Usuario(UserMixin, db.Model):
     senha = db.Column(db.String(200), nullable=False)
 
     tipo = db.Column(db.String(20), nullable=False)
+
+    token_recuperacao = db.Column(db.String(200))
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -162,6 +165,20 @@ def recuperar_senha():
 
         email = request.form.get("email")
 
+        usuario = Usuario.query.filter_by(email=email).first()
+
+        if usuario:
+
+            token = str(uuid.uuid4())
+            usuario.token_recuperacao = token
+            db.session.commit()
+
+            print(f"""
+LINK DE RECUPERAÇÃO:
+
+http://127.0.0.1:5000/redefinir_senha/{token}
+""")
+
         return render_template(
             "email_enviado.html",
             email=email
@@ -169,6 +186,45 @@ def recuperar_senha():
 
     return render_template("recuperar_senha.html")
 
+# =========================
+# REDEFINIR SENHA
+# =========================
+@app.route("/redefinir_senha/<token>", methods=["GET", "POST"])
+def redefinir_senha(token):
+
+    usuario = Usuario.query.filter_by(
+        token_recuperacao=token
+    ).first()
+
+    if not usuario:
+
+        return "Token inválido"
+
+    if request.method == "POST":
+
+        nova_senha = request.form.get("nova_senha")
+
+        confirmar_senha = request.form.get("confirmar_senha")
+
+        if nova_senha != confirmar_senha:
+
+            return "As senhas não coincidem"
+
+        senha_criptografada = generate_password_hash(
+            nova_senha
+        )
+
+        usuario.senha = senha_criptografada
+
+        usuario.token_recuperacao = None
+
+        db.session.commit()
+
+        return redirect("/")
+
+    return render_template(
+        "redefinir_senha.html"
+    )
 
 # =========================
 # DESLOGAR
