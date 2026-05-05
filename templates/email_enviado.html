@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Email Enviado</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+<body>
+    
+    <div class="recuperar-box">
+
+        <img src="{{ url_for('static', filename='imagens/neotemis.png') }}"
+         alt="Logo NeoTêmis" class="logo">
+        
+        <h2 class="recuperar-titulo">
+            Recuperar Senha
+        </h2>
+        
+        <p>
+            Enviamos um link de recuperação para
+            seu email:
+        </p>
+
+        <strong>
+            {{ email }}
+        </strong>
+
+        <a href="{{ url_for('login') }}" class="botao-login">
+            FAZER LOGIN
+        </a>
+    </div>
+
+</body>
+</html>

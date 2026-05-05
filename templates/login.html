@@ -29,7 +29,14 @@
                 id="email"
                 name="email"
                 placeholder="Digite seu email"
+                class="{% if erro_login %}input-erro{% endif %}"
             >
+
+            {% if erro_login %}
+            <span class="mensagem-erro mostrar-erro">
+                Email ou senha inválidos
+            </span>
+            {% endif %}
 
             <span class="mensagem-erro" id="erro-email">
                 Preencha o email
@@ -42,6 +49,7 @@
                     id="senha"
                     name="senha"
                     placeholder="Digite sua senha"
+                    class="{% if erro_login %}input-erro{% endif %}"
                 >
 
                 <span id="toggleSenha">
@@ -56,8 +64,8 @@
 
 
             <div class="links">
-                <a href="#">Esqueci a senha</a>
-                <a href="http://127.0.0.1:5000/cadastro">Cadastre-se</a>
+                <a href="/recuperar_senha">Esqueci a senha</a>
+                <a href="/cadastro">Cadastre-se</a>
             </div>
 
             <button type="submit">
@@ -68,5 +76,14 @@
 
     </div>
 
+    <script>
+
+        if (window.location.search.includes("erro=1")) {
+
+            window.history.replaceState({}, document.title, "/");
+
+        }
+
+    </script>
 </body>
 </html>

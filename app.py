@@ -68,9 +68,14 @@ def login():
             elif usuario.tipo == "admin":
                 return redirect("/home_admin")
 
-        return "Email ou senha inválidos"
+        return redirect("/?erro=1")
 
-    return render_template("login.html")
+    erro_login = request.args.get("erro")
+
+    return render_template(
+        "login.html",
+        erro_login=erro_login
+    )
 
 @app.route("/home_advogado")
 @login_required
@@ -146,6 +151,24 @@ def cadastro():
         return redirect("/")
 
     return render_template("cadastro.html")
+
+# =========================
+# RECUPERAR SENHA
+# =========================
+@app.route("/recuperar_senha", methods=["GET", "POST"])
+def recuperar_senha():
+
+    if request.method == "POST":
+
+        email = request.form.get("email")
+
+        return render_template(
+            "email_enviado.html",
+            email=email
+        )
+
+    return render_template("recuperar_senha.html")
+
 
 # =========================
 # DESLOGAR

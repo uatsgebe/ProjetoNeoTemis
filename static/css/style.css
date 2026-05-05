@@ -78,6 +78,10 @@ input:focus {
     display: none;
 }
 
+.mostrar-erro {
+    display: block;
+}
+
 .senha-area {
     position: relative;
 }
@@ -204,7 +208,6 @@ button:hover {
     color: #000;
 }
 
-/* checkbox mais suave */
 .termos input[type="checkbox"] {
     width: 14px;
     height: 14px;
@@ -216,4 +219,48 @@ button:hover {
     font-size: 14px;
     margin-top: 5px;
     display: none; /* esconde a mensagem */
+}
+
+
+/* RECUPERAR SENHA */
+.recuperar-titulo {
+    font-family: platypi;
+    font-style: italic;
+}
+
+.recuperar-texto {
+    font-family: platypi;
+    font-style: italic;
+}
+
+.recuperar-box {
+    width: 420px;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.9);
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.botao-login {
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    background-color: #212121;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
 }
