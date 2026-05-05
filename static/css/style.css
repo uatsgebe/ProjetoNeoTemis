@@ -264,3 +264,20 @@ button:hover {
 
     font-weight: bold;
 }
+
+.mensagem-sucesso {
+
+    color: #1b8a3d;
+
+    background: #d4f5dd;
+
+    border: 1px solid #1b8a3d;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    text-align: center;
+}

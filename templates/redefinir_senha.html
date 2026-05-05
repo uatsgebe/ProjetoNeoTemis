@@ -26,6 +26,14 @@
                 Nova Senha
             </h2>
 
+            {% if erro %}
+
+            <span class="mensagem-erro mostrar-erro">
+                {{ erro }}
+            </span>
+
+            {% endif %}
+
             <input 
                 type="password"
                 name="nova_senha"
