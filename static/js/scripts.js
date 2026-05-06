@@ -46,9 +46,9 @@ toggleSenha.addEventListener("click", function() {
 
 });
 
-//
+// ===============================
 // TERMOS DE USO E PRIVACIDADE
-//
+// ===============================
 
 const form = document.querySelector("form");
 const termos = document.getElementById("termos");

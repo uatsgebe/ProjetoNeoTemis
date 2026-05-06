@@ -33,9 +33,10 @@ def load_user(user_id):
     return Usuario.query.get(int(user_id))
 
 from routes.auth import auth_bp
-import routes.home
+from routes.home import home_bp
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(home_bp)
 
 # =========================
 # EXECUTAR SERVIDOR

@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -37,13 +37,13 @@ def login():
             login_user(usuario)
 
             if usuario.tipo == "advogado":
-                return redirect("/home_advogado")
+                return redirect(url_for("home.home_advogado"))
 
             elif usuario.tipo == "cliente":
-                return redirect("/home_cliente")
+                return redirect(url_for("home.home_cliente"))
 
             elif usuario.tipo == "admin":
-                return redirect("/home_admin")
+                return redirect(url_for("home.home_admin"))
 
         return redirect("/?erro=1")
 

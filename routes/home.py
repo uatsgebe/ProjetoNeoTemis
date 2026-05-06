@@ -1,9 +1,9 @@
-from flask import render_template, redirect
+from flask import Blueprint, render_template, redirect
 from flask_login import login_required, current_user
 
-from app import app
+home_bp = Blueprint("home", __name__)
 
-@app.route("/home_advogado")
+@home_bp.route("/home_advogado")
 @login_required
 def home_advogado():
 
@@ -13,7 +13,7 @@ def home_advogado():
     return render_template("home_advogado.html")
 
 
-@app.route("/home_cliente")
+@home_bp.route("/home_cliente")
 @login_required
 def home_cliente():
 
@@ -23,7 +23,7 @@ def home_cliente():
     return render_template("home_cliente.html")
 
 
-@app.route("/home_admin")
+@home_bp.route("/home_admin")
 @login_required
 def home_admin():
 
