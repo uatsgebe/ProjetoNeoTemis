@@ -5,6 +5,14 @@
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+
+/* LOGIN/CADASTRO */
+.body-auth {
     height: 100vh;
 
     display: flex;
@@ -14,12 +22,9 @@ body {
     background-image: url("../imagens/fundoneotemis.jpg");
     background-size: cover;
     background-position: center;
-    background-color: transparent;
-    
+
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-
-    font-family: Arial, sans-serif;
 }
 
 .login-box {
@@ -282,10 +287,286 @@ button:hover {
     text-align: center;
 }
 
+
+/* BASE */
+/* TOPBAR */
+.body-base {
+    margin: 0;
+    background: #F8FAFB;
+}
+
+.layout{
+    display: flex;
+}
+
+.topbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 45px;
+
+    background: linear-gradient(
+        to right,
+        #080808,
+        #212121
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    z-index: 1000;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo-topbar {
+    width: 28px;
+}
+
+
+/* BASE */
+/* PESQUISA */
+.pesquisa-container {
+    width: 320px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    background: #404040;
+
+    border-radius: 20px;
+
+    padding: 0 8px;
+}
+
+.botao-pesquisa {
+    width: 14px;
+    height: 14px;
+
+    background: transparent;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin-right: 6px;
+
+    cursor: pointer;
+}
+
+.botao-pesquisa img {
+    width: 12px;
+    height: 12px;
+}
+
+.campo-pesquisa {
+    width: 100% !important;
+    height: 100% !important;
+
+    background: transparent;
+    border: none !important;
+    outline: none;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    color: #FFFFFF;
+
+    font-size: 12px;
+
+    box-shadow: none !important;
+}
+
+.campo-pesquisa::placeholder {
+    color: #777777;
+}
+
+
+/* BASE */
+/* TOPBAR RIGHT */
+.icone-topbar {
+    width: 24px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.perfil-menu {
+    position: relative;
+}
+
+.perfil-botao {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.perfil-dropdown {
+    display: none;
+
+    position: absolute;
+    right: 0;
+    top: 42px;
+
+    width: 220px;
+
+    background: white;
+    border-radius: 12px;
+    padding: 14px;
+
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+    z-index: 100;
+}
+
+.perfil-dropdown.ativo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.perfil-dropdown p {
+    font-size: 13px;
+    color: #555;
+}
+
+.perfil-dropdown a {
+    text-decoration: none;
+    color: #212121;
+    font-size: 14px;
+}
+
+.perfil-dropdown a:hover {
+    text-decoration: underline;
+}
+
+
+/* BASE */
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+
+    top: 45px;
+    left: 0;
+
+    width: 50px;
+    height: calc(100vh - 45px);
+
+    background: #D9D9D9;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 18px;
+    gap: 24px;
+
+    z-index: 900;
+}
+
+.sidebar a img {
+    width: 24px;
+    height: 24px;
+}
+
+.conteudo {
+    margin-left: 50px;
+    margin-top: 45px;
+
+    width: calc(100% - 50px);
+    min-height: calc(100vh - 45px);
+
+    padding: 22px;
+
+    background: #F8FAFB;
+}
+
+.sidebar-link {
+    position: relative;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-link img {
+    width: 24px;
+    height: 24px;
+}
+
+.tooltip {
+    position: absolute;
+    left: 55px;
+
+    background: #212121;
+    color: white;
+
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    font-size: 13px;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(-6px);
+    transition: 0.2s;
+
+    z-index: 200;
+}
+
+.sidebar-link:hover .tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* BASE */
+/* CONTEÚDO */
+.pagina-topo {
+    margin-bottom: 30px;
+}
+
+.data-atual {
+    font-family: "Platypi", serif;
+    font-size: 17px;
+    color: #212121;
+}
+
+.titulo-pagina {
+    font-family: "Rajdhani", serif;
+    font-size: 30px;
+    color: #080808;
+    margin-top: 8px;
+}
+
+
 /* DASHBOARD */
 
 /* CRIAR ESCRITÓRIO */
-
 textarea {
     width: 100%;
     min-height: 90px;
@@ -304,4 +585,18 @@ textarea {
 
 textarea:focus {
     border-color: #212121;
+}
+
+/* ESCRITÓRIO */
+
+/* EQUIPE */
+.card-membro {
+    padding: 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    background: white;
+
+    margin-bottom: 12px;
 }

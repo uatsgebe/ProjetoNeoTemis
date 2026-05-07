@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard</title>
+    <title>Equipe</title>
 
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +17,43 @@
 
 <body>
 
-    <h1>
-        Bem-vindo, {{ current_user.nome }} (Cliente)
-    </h1>
+    <div class="login-box">
+
+        <h1>Equipe</h1>
+
+        {% if current_user.papel_escritorio == "gestor" %}
+
+            <a href="{{ url_for('home.novo_membro') }}">
+                Novo Membro
+            </a>
+
+        {% endif %}
+
+        {% for membro in membros %}
+
+            <div class="card-membro">
+
+                <h3>{{ membro.nome }}</h3>
+
+                <p>
+                    Papel:
+                    {{ membro.papel_escritorio }}
+                </p>
+
+                <p>
+                    Email:
+                    {{ membro.email }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+        <a href="{{ url_for('home.dashboard') }}">
+            Voltar
+        </a>
+
+    </div>
     
 </body>
-
 </html>

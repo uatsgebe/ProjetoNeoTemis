@@ -3,7 +3,6 @@ console.log("JS carregou");
 // ===============================
 // ELEMENTOS
 // ===============================
-
 const formLogin = document.getElementById("form-login");
 
 const emailInput = document.getElementById("email");
@@ -16,7 +15,6 @@ const toggleSenha = document.getElementById("toggleSenha");
 // ===============================
 // LOGIN
 // ===============================
-
 const erroEmail =
     document.getElementById("erro-email");
 
@@ -27,7 +25,6 @@ const erroSenha =
 // ===============================
 // MOSTRAR / OCULTAR SENHA
 // ===============================
-
 toggleSenha.addEventListener("click", function() {
 
     if (senhaInput.type === "password") {
@@ -46,10 +43,10 @@ toggleSenha.addEventListener("click", function() {
 
 });
 
+
 // ===============================
 // TERMOS DE USO E PRIVACIDADE
 // ===============================
-
 const form = document.querySelector("form");
 const termos = document.getElementById("termos");
 const erro = document.getElementById("erro-termos");
@@ -69,3 +66,67 @@ termos.addEventListener("change", function () {
     erro.style.display = "none";
   }
 });
+
+
+// ===============================
+// BOTÃO PERFIL
+// ===============================
+const perfilBotao = document.getElementById("perfilBotao");
+const perfilDropdown = document.getElementById("perfilDropdown");
+
+if (perfilBotao && perfilDropdown) {
+
+    perfilBotao.addEventListener("click", function(event) {
+        event.stopPropagation();
+        perfilDropdown.classList.toggle("ativo");
+    });
+
+    document.addEventListener("click", function() {
+        perfilDropdown.classList.remove("ativo");
+    });
+
+}
+
+// ===============================
+// DATA ATUAL (base.html)
+// ===============================
+const dataAtual = document.getElementById("dataAtual");
+
+function atualizarDataHora() {
+
+    if (!dataAtual) {
+        return;
+    }
+
+    const agora = new Date();
+
+    const opcoesData = {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    };
+
+    const dataFormatada = agora.toLocaleDateString(
+        "pt-BR",
+        opcoesData
+    );
+
+    const horaFormatada = agora.toLocaleTimeString(
+        "pt-BR",
+        {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        }
+    );
+    
+    const dataComMaiuscula =
+    dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+
+    dataAtual.textContent =
+        `${dataComMaiuscula} | ${horaFormatada}`;
+}
+
+atualizarDataHora();
+
+setInterval(atualizarDataHora, 1000);

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeoTêmis</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+
+</head>
+
+<body class="body-base">
+    
+    <div class="layout">
+
+        <!-- TOPBAR -->
+         <header class="topbar">
+
+            <div class="topbar-left">
+                <img
+                    src="{{ url_for('static', filename='imagens/temis.png') }}"
+                    class="logo-topbar"
+                >
+
+                <form class="pesquisa-container">
+
+                    <button type="submit" class="botao-pesquisa">
+
+                        <img
+                            src="{{ url_for('static', filename='imagens/lupa.png') }}"
+                        >
+
+                    </button>
+
+                    <input
+                        type="text"
+                        class="campo-pesquisa"
+                        placeholder="Pesquisar..."
+                    >
+
+                </form>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <a href="#">
+                    <img
+                        src="{{ url_for('static', filename='imagens/notificacoes.png') }}"
+                        class="icone-topbar"
+                    >
+                </a>
+
+                <div class="perfil-menu">
+
+                    <button class="perfil-botao" id="perfilBotao">
+                        <img
+                            src="{{ url_for('static', filename='imagens/perfil.png') }}"
+                            class="avatar"
+                        >
+                    </button>
+
+                    <div class="perfil-dropdown" id="perfilDropdown">
+
+                        <strong>
+                            {{ current_user.nome }}
+                        </strong>
+
+                        {% if current_user.tipo == "advogado" %}
+
+                            {% if current_user.papel_escritorio == "autonomo" %}
+                                <p>Advogado autônomo</p>
+                            {% else %}
+                                <p>{{ current_user.papel_escritorio }}</p>
+                            {% endif %}
+
+                        {% else %}
+                            <p>{{ current_user.tipo }}</p>
+                        {% endif %}
+
+                        {% if current_user.escritorio_id %}
+                            <p>Escritório vinculado</p>
+                        {% endif %}
+
+                        <hr>
+
+                        <a href="#">
+                            Editar Perfil
+                        </a>
+
+                        <a href="{{ url_for('auth.logout') }}">
+                            Sair
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <nav class="menu">
+
+                <a href="{{ url_for('home.dashboard') }}" title="Dashboard" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='imagens/dashboard.png') }}">
+                    <span class="tooltip">Dashboard</span>
+                </a>
+
+                {% if current_user.tipo == "advogado" %}
+
+                    <a href="{{ url_for('home.escritorio') }}" title="Escritório" class="sidebar-link">
+                        <img src="{{ url_for('static', filename='imagens/escritorio.png') }}">
+                        <span class="tooltip">Escritório</span>
+                    </a>
+
+                {% endif %}
+
+                {% if current_user.escritorio_id %}
+
+                    <a href="{{ url_for('home.equipe') }}" title="Equipe" class="sidebar-link">
+                        <img src="{{ url_for('static', filename='imagens/equipe.png') }}">
+                        <span class="tooltip">Equipe</span>
+                    </a>
+
+                {% endif %}
+
+                <a href="#" title="Processos" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='imagens/processos.png') }}">
+                    <span class="tooltip">Processos</span>
+                </a>
+
+                <a href="#" title="Documentos" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='imagens/documentos.png') }}">
+                    <span class="tooltip">Documentos</span>
+                </a>
+
+
+                <a href="#" title="Configurações" class="sidebar-link">
+                    <img src="{{ url_for('static', filename='imagens/configuracoes.png') }}">
+                    <span class="tooltip">Configurações</span>
+                </a>
+
+            </nav>
+
+            
+
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <main class="conteudo">
+
+            <div class="pagina-topo">
+
+                <p class="data-atual" id="DataAtual"></p>
+
+                <h1 class="titulo-pagina">
+                    {% block titulo %}
+                    Dashboard
+                    {% endblock %}
+                </h1>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+</body>
+</html>

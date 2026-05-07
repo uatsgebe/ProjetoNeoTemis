@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Criar Escritório</title>
+    <title>Novo Membro</title>
 
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +16,12 @@
 </head>
 
 <body>
-
+    
     <div class="login-box">
 
         <form method="POST">
 
-            <h2>Criar Escritório</h2>
+            <h2>Novo Membro</h2>
 
             {% if erro %}
             <span class="mensagem-erro mostrar-erro">
@@ -30,45 +30,23 @@
             {% endif %}
 
             <input
-                type="text"
-                name="nome"
-                placeholder="Nome do escritório"
+                type="email"
+                name="email"
+                placeholder="Email do usuário"
                 required
             >
 
-            <input
-                type="date"
-                name="data_fundacao"
-            >
-
-            <textarea
-                name="descricao"
-                placeholder="Descrição do escritório"
-            ></textarea>
-
-            <input
-                type="text"
-                name="telefone"
-                placeholder="Telefone"
-            >
-
-            <input
-                type="email"
-                name="email"
-                placeholder="Email do escritório"
-            >
-
-            <input
-                type="text"
-                name="endereco"
-                placeholder="Endereço"
-            >
+            <select name="papel" required>
+                <option value="">Selecione o papel</option>
+                <option value="advogado">Advogado</option>
+                <option value="estagiario">Estagiário</option>
+            </select>
 
             <button type="submit">
-                CRIAR ESCRITÓRIO
+                Adicionar
             </button>
 
-            <a href="{{ url_for('home.escritorio') }}">
+            <a href="{{ url_for('home.equipe') }}">
                 Voltar
             </a>
 
