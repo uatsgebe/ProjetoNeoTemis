@@ -1,55 +1,79 @@
-//pra baixar o flask digite no terminal:
+# NeoTêmis
+
+Sistema web jurídico desenvolvido com Flask, com autenticação de usuários, cadastro, login, recuperação de senha, controle de sessão, permissões por tipo de usuário e estrutura modular.
+
+## Tecnologias utilizadas
+
+- Python
+- Flask
+- Flask-SQLAlchemy
+- Flask-Login
+- Flask-Migrate
+- python-dotenv
+- SQLite
+- HTML
+- CSS
+- JavaScript
+
+## Como rodar o projeto em outro computador
+
+Clonar o repositório
+
+```bash
+git clone https://github.com/uatsgebe/ProjetoNeoTemis.git
+
+Após baixar ou clonar o projeto pelo GitHub, siga os passos abaixo para configurar corretamente o ambiente e executar o sistema.
+
+1. Abrir a pasta do projeto no VS Code
+
+Abra a pasta do projeto normalmente pelo VS Code.
+
+2. Criar o ambiente virtual
+
+No terminal do VS Code, execute:
+
+```bash
+python -m venv venv
+
+3. Ativar o ambiente virtual
+
+venv\Scripts\activate
+
+Se funcionar corretamente, no início da linha do terminal aparecerá algo parecido com:
+
+(venv)
+
+4. Instalar as dependências necessárias
+Execute os comandos abaixo no terminal:
 
 pip install flask
-
-//depois execute o SQLAlchemy (banco de dados):
-
 pip install flask_sqlalchemy
-
-//depois instale o sistema de login/sessao
-
 pip install flask_login
+pip install flask_migrate
+pip install python-dotenv
 
-//depois que baixou tudo, abrir terminal com 
+5. Executar o sistema
+Depois de instalar tudo, execute:
 
 python app.py
 
-//obs: toda vez que fechar e abrir o VS code,
-abrir o terminal e executar esse código ^
+6. Abrir o sistema no navegador
+Após rodar o comando acima, o terminal mostrará um endereço parecido com:
 
-=======================================
+http://127.0.0.1:5000
 
-// Organização
+Abra esse endereço no navegador para acessar o sistema.
 
-models/: Tabelas do banco.
-    Exemplo:
-    class Usuario(db.Model)
+################
 
-routes/: Rotas Flask.
-    Exemplo:
-    @app.route("/")
+Observações importantes
+O projeto utiliza Flask, então NÃO deve ser aberto com Live Server.
+O sistema sempre deve ser executado pelo app.py.
+O banco SQLite é criado automaticamente dentro da pasta instance/.
+Caso o banco apresente erro por falta de colunas após atualizações do projeto, apague o arquivo:
 
-services/: Lógica do sistema
-    Exemplo:
-    login, token, email, regras
+instance/banco.db
 
-static/: Arquivos enviados diretamente ao navegador
-    Exemplo:
-    Javascript, CSS e imagens
+e para recriar o banco atualizado, execute novamente:
 
-templates/: Arquivos de estrutura visual
-    Exemplos:
-    Pagina Login, Cadastro, Pagina Inicial
-
-=======================================
-
-// Baixar, caso precise
-
-Flask Migrate:
-
-pip install flask-migrate
-
-
-.env:
-
-pip install python-dotenv
+python app.py
