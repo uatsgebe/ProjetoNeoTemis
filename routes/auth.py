@@ -37,13 +37,13 @@ def login():
             login_user(usuario)
 
             if usuario.tipo == "advogado":
-                return redirect(url_for("home.home_advogado"))
+                return redirect(url_for("home.dashboard"))
 
             elif usuario.tipo == "cliente":
-                return redirect(url_for("home.home_cliente"))
+                return redirect(url_for("home.dashboard"))
 
             elif usuario.tipo == "admin":
-                return redirect(url_for("home.home_admin"))
+                return redirect(url_for("home.dashboard"))
 
         return redirect("/?erro=1")
 
@@ -74,11 +74,32 @@ def cadastro():
 
         tipo = request.form.get("tipo")
 
+        papel_escritorio = None
+
+        if tipo == "advogado":
+            papel_escritorio = "autonomo"
+
         email = request.form.get("email")
 
         senha = request.form.get("senha")
         senha_criptografada = criptografar_senha(senha)
 
+        usuario_email = Usuario.query.filter_by(email=email).first()
+
+        if usuario_email:
+            return render_template(
+                "cadastro.html",
+                erro_cadastro="Este email já está cadastrado."
+            )
+
+
+        usuario_cpf = Usuario.query.filter_by(cpf=cpf).first()
+
+        if usuario_cpf:
+            return render_template(
+                "cadastro.html",
+                erro_cadastro="Este CPF já está cadastrado."
+            )
 
         novo_usuario = Usuario(
 
@@ -92,7 +113,9 @@ def cadastro():
 
             senha=senha_criptografada,
 
-            tipo=tipo
+            tipo=tipo,
+
+            papel_escritorio=papel_escritorio,
         )
 
         db.session.add(novo_usuario)

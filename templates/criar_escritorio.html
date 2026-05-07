@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar Escritório</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imagens/neotemisico.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+
+</head>
+<body>
+
+    <div class="login-box">
+
+        <form method="POST">
+
+            <h2>Criar Escritório</h2>
+
+            {% if erro %}
+            <span class="mensagem-erro mostrar-erro">
+                {{ erro }}
+            </span>
+            {% endif %}
+
+            <input
+                type="text"
+                name="nome"
+                placeholder="Nome do escritório"
+                required
+            >
+
+            <input
+                type="date"
+                name="data_fundacao"
+            >
+
+            <textarea
+                name="descricao"
+                placeholder="Descrição do escritório"
+            ></textarea>
+
+            <input
+                type="text"
+                name="telefone"
+                placeholder="Telefone"
+            >
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email do escritório"
+            >
+
+            <input
+                type="text"
+                name="endereco"
+                placeholder="Endereço"
+            >
+
+            <button type="submit">
+                CRIAR ESCRITÓRIO
+            </button>
+
+            <a href="{{ url_for('home.escritorio') }}">
+                Voltar
+            </a>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

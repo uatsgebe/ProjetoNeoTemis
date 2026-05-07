@@ -59,6 +59,12 @@
             CADASTRO
         </h2>
 
+        {% if erro_cadastro %}
+        <span class="mensagem-erro mostrar-erro">
+            {{ erro_cadastro }}
+        </span>
+        {% endif %}
+
         <input
             type="text"
             name="nome"

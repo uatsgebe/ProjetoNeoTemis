@@ -20,6 +20,10 @@ class Usuario(UserMixin, db.Model):
 
     tipo = db.Column(db.String(20), nullable=False)
 
+    escritorio_id = db.Column(db.Integer, nullable=True)
+
+    papel_escritorio = db.Column(db.String(30), nullable=True)
+
     token_recuperacao = db.Column(db.String(200))
 
     token_expira_em = db.Column(db.DateTime)
